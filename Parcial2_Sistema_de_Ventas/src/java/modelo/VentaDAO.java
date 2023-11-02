@@ -31,6 +31,7 @@ public class VentaDAO {
 
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return numeroserie;
     }
@@ -47,14 +48,15 @@ public class VentaDAO {
 
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return idventas;
     }
-    
-    public int  guardarVenta(Venta ve){
+
+    public int guardarVenta(Venta ve) {
         String sql = "insert into ventas(IdCliente,IdEmpleado,NumeroSerie,FechaVentas,Monto,Estado)values(?,?,?,?,?,?)";
         try {
-           con = cn.Conexion();
+            con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, ve.getIdcliente());
             ps.setInt(2, ve.getIdempleado());
@@ -64,15 +66,15 @@ public class VentaDAO {
             ps.setString(6, ve.getEstado());
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println("aaaaaaaaaa"  + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
         return r;
     }
-    
-    public int guardarDetalleventa(Venta ve){
+
+    public int guardarDetalleventa(Venta ve) {
         String sql = "insert into detalle_ventas(IdVentas,IdProducto,Cantidad,PrecioVenta)values(?,?,?,?)";
         try {
-           con = cn.Conexion();
+            con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, ve.getId());
             ps.setInt(2, ve.getIdproducto());
@@ -80,6 +82,7 @@ public class VentaDAO {
             ps.setDouble(4, ve.getPrecio());
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return r;
     }

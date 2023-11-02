@@ -21,7 +21,7 @@ public class EmpleadoDAO {
         Validar v = new Validar();
 
         String sql = "select * from empleado where User = ? and Password = ?";
-                
+
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -38,7 +38,7 @@ public class EmpleadoDAO {
 
             con.close();
         } catch (Exception e) {
-            System.out.println("Error: "+e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
 
         return em;
@@ -66,6 +66,7 @@ public class EmpleadoDAO {
                 lista.add(em);
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         return lista;
@@ -85,6 +86,7 @@ public class EmpleadoDAO {
             ps.setString(6, em.getPass());
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return r;
     }
@@ -97,7 +99,7 @@ public class EmpleadoDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 emp.setDni(rs.getString(2));
                 emp.setNom(rs.getString(3));
@@ -107,6 +109,7 @@ public class EmpleadoDAO {
                 emp.setPass(rs.getString(7));
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         return emp;
@@ -139,6 +142,7 @@ public class EmpleadoDAO {
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

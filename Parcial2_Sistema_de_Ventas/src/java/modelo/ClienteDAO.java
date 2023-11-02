@@ -14,11 +14,11 @@ public class ClienteDAO {
     PreparedStatement ps;
     ResultSet rs;
     int r;
-    
-    public Cliente buscar(String dni){
+
+    public Cliente buscar(String dni) {
         Cliente cl = new Cliente();
-        String sql = "select * from cliente where Dni="+dni;
-        
+        String sql = "select * from cliente where Dni=" + dni;
+
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -32,8 +32,9 @@ public class ClienteDAO {
                 cl.setEstado(rs.getString(5));
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        
+
         return cl;
     }
 
@@ -56,6 +57,7 @@ public class ClienteDAO {
                 lista.add(cl);
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         return lista;
@@ -73,6 +75,7 @@ public class ClienteDAO {
             ps.setString(4, cl.getEstado());
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return r;
     }
@@ -93,6 +96,7 @@ public class ClienteDAO {
                 cli.setEstado(rs.getString(5));
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         return cli;
@@ -111,6 +115,7 @@ public class ClienteDAO {
             ps.setInt(5, cl.getId());
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return r;
     }
@@ -122,6 +127,7 @@ public class ClienteDAO {
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

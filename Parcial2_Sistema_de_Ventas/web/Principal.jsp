@@ -3,11 +3,20 @@
 <%
     HttpSession sesion = request.getSession();
     Empleado emp = (Empleado) sesion.getAttribute("user");
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     
     if(emp != null) {
 %>
 
 <!DOCTYPE html>
+
+<script type="text/javascript">
+    window.history.forward();
+    
+    function noBack() {
+        window.history.forward();
+    }   
+</script>
 
 <html>
     <head>
@@ -16,7 +25,7 @@
         <title>Home</title>
     </head>
 
-    <body>
+    <body onload="noBack();" onpageshow="if(event.persisted) noBack();">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="Principal.jsp">Home</a>
 

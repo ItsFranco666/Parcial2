@@ -15,15 +15,15 @@ public class ProductoDAO {
     ResultSet rs;
     int r;
 
-    public Producto buscar(int id){
+    public Producto buscar(int id) {
         Producto p = new Producto();
-       String sql = "select * from producto where idproducto =" + id; 
-       
+        String sql = "select * from producto where idproducto =" + id;
+
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 p.setId(rs.getInt(1));
                 p.setDescripcion(rs.getString(2));
                 p.setPrecio(rs.getDouble(3));
@@ -31,22 +31,25 @@ public class ProductoDAO {
                 p.setEstado(rs.getString(5));
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return p;
     }
-    
-    public int actualizarstock(int id, int stock){
+
+    public int actualizarstock(int id, int stock) {
         String sql = "update producto set Stock = ? where idproducto = ?";
         try {
-           con = cn.Conexion();
+            con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, stock);
             ps.setInt(2, id);
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return r;
     }
+
     public List listar() {
         String sql = "select * from producto";
         List<Producto> lista = new ArrayList<>();
@@ -66,6 +69,7 @@ public class ProductoDAO {
                 lista.add(pd);
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         return lista;
@@ -83,6 +87,7 @@ public class ProductoDAO {
             ps.setString(4, pd.getEstado());
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return r;
     }
@@ -104,6 +109,7 @@ public class ProductoDAO {
                 prod.setEstado(rs.getString(5));
             }
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         return prod;
@@ -122,6 +128,7 @@ public class ProductoDAO {
             ps.setInt(5, pr.getId());
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return r;
     }
@@ -133,6 +140,7 @@ public class ProductoDAO {
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

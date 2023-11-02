@@ -13,9 +13,9 @@
                 <div class="card-body">
                     <form class="form-sign" action="Validar" method="POST">
                         <div class="form-group text-center">
-                            <img src="img/login.png" alt="100" width="200">
+                            <img src="img/login.png" alt="100" width="220">
                         </div>
-
+                        
                         <div class="form-group">
                             <label>Username:</label>
                             <input type="text" name="txtuser" class="form-control">

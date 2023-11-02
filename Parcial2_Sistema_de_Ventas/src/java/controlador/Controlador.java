@@ -306,6 +306,7 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("total", total);
                     request.setAttribute("lista", lista);
                     break;
+                    
                 case "GenerarVenta":
                     //ACTUALIZAR STOCK
                     for (int i = 0; i < lista.size(); i++) {
@@ -337,6 +338,10 @@ public class Controlador extends HttpServlet {
 
                     }
 
+                    break;
+                
+                case "Cancel":
+                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
                     break;
 
                 default:

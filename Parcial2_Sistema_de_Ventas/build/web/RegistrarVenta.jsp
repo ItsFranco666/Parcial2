@@ -1,4 +1,4 @@
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import = "modelo.Empleado"%>
 <%
@@ -18,7 +18,6 @@
                 .parte1, .btn,.accion{
                     display: none;
                 }
-               
             }
         </style>
     </head>
@@ -103,7 +102,6 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Subtotal</th>
-                                    <th class="accion">Actions</th>
                                 </tr>
                             </thead>
 
@@ -116,10 +114,6 @@
                                         <td>${list.getPrecio()}</td>
                                         <td>${list.getCantidad()}</td>
                                         <td>${list.getSubtotal()}</td>
-                                        <td class="d-flex">
-                                            <a href="#" class="btn btn-warning">Edit</a>
-                                            <a href="#" class="btn btn-danger"style="margin-left: 10px">Delete</a>
-                                        </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -129,7 +123,7 @@
                     <div class="card-footer d-flex">
                         <div class="col-sm-6">
                             <a href="Controlador?menu=NuevaVenta&accion=GenerarVenta" onclick="print()" class="btn btn-success">Sale</a>
-                            <input type="submit" name="accion" value="Cancel" class="btn btn-danger">
+                            <a href="Controlador?menu=NuevaVenta&accion=Cancel" class="btn btn-danger">Cancel</a>
                         </div>
 
                         <div class="col-sm-4 ml-auto d-flex">
@@ -144,7 +138,7 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     </body>
-    
+
     <%
         } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);
